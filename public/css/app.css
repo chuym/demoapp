@@ -7,6 +7,10 @@ h1 {
     margin-bottom: 5px;
 }
 
+#tab-content {
+    min-height: 300px;
+}
+
 .tab {
     display: inline;
     background: #c3c3c3;
@@ -27,4 +31,8 @@ h1 {
 
 .nav-tabs {
     border-bottom: 1px solid black;
+}
+
+footer {
+    border-top: 1px solid black;
 }
