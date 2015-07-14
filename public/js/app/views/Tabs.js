@@ -5,22 +5,22 @@ define([
 ], function (Backbone, $, template) {
     return Backbone.View.extend({
 
-        navigatorBehaviors: ["IHasStateTransition"],
+        navigatorBehaviors: ["IHasStateTransition", "IHasStateUpdate"],
+
+        localisation: 'inject',
 
         events: {
             'click .tab a': 'changeTab'
         },
 
         initialize: function () {
-            var localisation = this.injector.getInstance("Localisation");
-			this.listenTo(localisation, "change:lang", this.render);
+			this.listenTo(this.localisation, "change:lang", this.render);
 
             this.render();
         },
 
         render: function () {
-            var localisation = this.injector.getInstance("Localisation").getLocalisation();
-            this.$el.html(template(localisation.nav));
+            this.$el.html(template(this.localisation.getLocalisation().nav));
 
             return this;
         },
@@ -28,13 +28,23 @@ define([
         changeTab: function (e) {
             e.preventDefault();
             var target = $(e.target),
-                njs = this.injector.getInstance("njs"),
-                currentTab = this.$el.find(".tab.active");
-
-            currentTab.removeClass("active");
-            target.parent(".tab").addClass("active");
+                njs = this.injector.getInstance("njs");
 
             njs.request("/myapp/" + target.data('tab'));
+        },
+        transitionIn: function (done) {
+            this.$el.show(done);
+        },
+
+        transitionIn: function (done) {
+            this.$el.hide(done);
+        },
+
+        updateState: function (truncated, full) {
+            var active = full.getLastSegment();
+
+            this.$el.find('.active').removeClass("active");
+            this.$el.find('[data-tab="' + active + '"]').parent().addClass("active")
         }
     });
 

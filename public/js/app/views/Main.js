@@ -3,11 +3,9 @@ define([
     'hbs!templates/Main'
 ], function (Backbone, template) {
     return Backbone.View.extend({
-        navigatorBehaviors: [""],
+        navigatorBehaviors: ["IHasStateTransition"],
 
         className: 'mainView',
-
-        injector: "inject",
 
         initialize: function () {
             this.render();
@@ -17,6 +15,14 @@ define([
             this.$el.html(template({}));
 
             return this;
+        },
+
+        transitionIn: function (done) {
+            this.$el.show(0, done);
+        },
+
+        transitionIn: function (done) {
+            this.$el.hide(0, done);
         }
     });
 

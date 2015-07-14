@@ -44,7 +44,7 @@ define([
         },
 
         mapModels: function () {
-            this.injector.map("Localisation").toSingleton(LocalisationModel);
+            this.injector.map("localisation").toSingleton(LocalisationModel);
         },
 
         mapStates: function () {
@@ -53,15 +53,13 @@ define([
                 recipe = this.stateViewMap.mapState(states).toView(Main).withArguments({injector: this.injector});
 
 
-            [Header, Tabs, Footer].forEach(function (view) {
-                _this.stateViewMap.mapState(states).toView(view).withArguments({injector: _this.injector}).withParent(recipe).inside("#app");
-            });
+            this.stateViewMap.mapState(states).toView(Header).withArguments({injector: _this.injector}).withParent(recipe).inside("#app");
+            this.stateViewMap.mapState(states).toView(Tabs).withArguments({injector: _this.injector}).withParent(recipe).inside("#app");
+            this.stateViewMap.mapState(states).toView(Footer).withArguments({injector: _this.injector}).withParent(recipe).inside("#app");
 
-            _.zip([Page1, Page2, Page3], states).forEach(function (pair) {
-                var view = pair[0],
-                    state = pair[1];
-                _this.stateViewMap.mapState([state]).toView(view).withArguments({injector: _this.injector}).withParent(recipe).inside("#tab-content");
-            });
+            this.stateViewMap.mapState("myapp/page1").toView(Page1).withArguments({injector: _this.injector}).withParent(recipe).inside("#tab-content");
+            this.stateViewMap.mapState("myapp/page2").toView(Page2).withArguments({injector: _this.injector}).withParent(recipe).inside("#tab-content");
+            this.stateViewMap.mapState("myapp/page3").toView(Page3).withArguments({injector: _this.injector}).withParent(recipe).inside("#tab-content");
         }
     });
 });

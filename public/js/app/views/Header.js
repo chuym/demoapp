@@ -4,35 +4,41 @@ define([
 ], function (Backbone, template) {
     return Backbone.View.extend({
 
-        navigatorBehaviors: [""],
+        navigatorBehaviors: ["IHasStateTransition", "IHasStateUpdate"],
         tagName: "header",
+
+        localisation: 'inject',
 
         events: {
             'click .lang a': 'changeLanguage'
         },
 
-        injector: 'inject',
-
         initialize: function () {
-            var localisation = this.injector.getInstance("Localisation");
-			this.listenTo(localisation, "change:lang", this.render);
+			this.listenTo(this.localisation, "change:lang", this.render);
             this.render();
         },
 
         render: function () {
-            var localisation = this.injector.getInstance("Localisation").getLocalisation();
-            this.$el.html(template(localisation.header));
+            this.$el.html(template(this.localisation.getLocalisation().header));
 
             return this;
         },
 
         changeLanguage: function (e) {
             e.preventDefault();
-            var target = $(e.target),
-                localisation = this.injector.getInstance("Localisation");
+            var target = $(e.target);
 
-            localisation.set('lang', target.data('lang'));
-            console.log(localisation.get('lang'));
+            this.localisation.set('lang', target.data('lang'));
+        },
+
+        transitionIn: function (done) {
+            this.$el.show(0, done);
+        },
+
+        transitionIn: function (done) {
+            this.$el.hide(0, done);
         }
+
+
     });
 });
