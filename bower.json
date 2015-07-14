@@ -1,0 +1,13 @@
+{
+  "name": "demoapp",
+  "dependencies": {
+    "backbone": "1.0.0",
+    "jquery": "~2.1.4",
+    "underscore": "1.5.2",
+    "requirejs": "2.1.9",
+    "backbone-command": "*",
+    "navigator.js": "*",
+    "require-handlebars-plugin": "0.4.0",
+    "backbone-injector": "*"
+  }
+}

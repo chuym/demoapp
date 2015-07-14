@@ -1,0 +1,30 @@
+header {
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+}
+
+h1 {
+    margin-bottom: 5px;
+}
+
+.tab {
+    display: inline;
+    background: #c3c3c3;
+    border: 1px solid black;
+    list-style-type: none;
+    padding: 1px 20px;
+}
+
+.tab.active {
+    background: #fff;
+    border-bottom: solid 1px #fff;
+}
+
+.tab a {
+    text-decoration: none;
+    color: #000;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid black;
+}
