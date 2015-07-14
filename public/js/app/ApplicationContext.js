@@ -12,7 +12,7 @@ define([
     "views/Page3"
 ], function (Backbone, _, navigatorjs, LocalisationModel, Main, Header, Footer, Tabs, Page1, Page2, Page3) {
     return Backbone.CommandRouter.extend({
-        Backbone, $e: null,
+        $e: null,
         njs: null,
         stateViewMay: null,
         stateUrlSyncer: null,
