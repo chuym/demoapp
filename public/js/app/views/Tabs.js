@@ -23,10 +23,14 @@ define([
         },
 
         changeTab: function (e) {
-            var target = $(e.target),
-                njs = this.injector.getInstance("njs");
-
             e.preventDefault();
+            var target = $(e.target),
+                njs = this.injector.getInstance("njs"),
+                currentTab = this.$el.find(".tab.active");
+
+            currentTab.removeClass("active");
+            target.parent(".tab").addClass("active");
+
             njs.request("/myapp/" + target.data('tab'));
         }
     });
