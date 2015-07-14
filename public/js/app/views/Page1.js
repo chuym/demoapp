@@ -4,7 +4,7 @@ define([
     'underscore'
 ], function (Backbone, template, _) {
     return Backbone.View.extend({
-        navigatorBehaviors: [""],
+        navigatorBehaviors: ["IHasStateTransition"],
 
         initialize: function () {
             this.render();
@@ -15,6 +15,14 @@ define([
             this.$el.html(template(_.extend(localisation.content, { page: localisation.nav.page1 })));
 
             return this;
+        },
+
+        transitionIn: function (done) {
+            this.$el.show(400, done);
+        },
+
+        transitionOut: function (done) {
+            this.$el.hide(400, done);
         }
     });
 

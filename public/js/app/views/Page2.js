@@ -14,7 +14,16 @@ define([
             this.$el.html(template(_.extend(localisation.content, { page: localisation.nav.page2 })));
 
             return this;
+        },
+
+        transitionIn: function (done) {
+            this.$el.show(400, done);
+        },
+
+        transitionOut: function (done) {
+            this.$el.hide(400, done);
         }
+
     });
 
 });

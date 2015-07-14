@@ -5,7 +5,7 @@ define([
 ], function (Backbone, $, template) {
     return Backbone.View.extend({
 
-        navigatorBehaviors: [""],
+        navigatorBehaviors: ["IHasStateTransition"],
 
         events: {
             'click .tab a': 'changeTab'
