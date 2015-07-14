@@ -7,6 +7,16 @@ h1 {
     margin-bottom: 5px;
 }
 
+.lang {
+    float: right;
+}
+
+.lang li {
+    display: inline;
+    list-style-type: none;
+}
+
+
 #tab-content {
     min-height: 300px;
 }

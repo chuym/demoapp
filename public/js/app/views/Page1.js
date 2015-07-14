@@ -7,6 +7,8 @@ define([
         navigatorBehaviors: ["IHasStateTransition"],
 
         initialize: function () {
+            var localisation = this.injector.getInstance("Localisation");
+			this.listenTo(localisation, "change:lang", this.render);
             this.render();
         },
 
