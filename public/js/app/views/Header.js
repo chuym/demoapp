@@ -5,7 +5,6 @@ define([
     return Backbone.View.extend({
 
         navigatorBehaviors: ["IHasStateTransition", "IHasStateUpdate"],
-        tagName: "header",
 
         localisation: 'inject',
 

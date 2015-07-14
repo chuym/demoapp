@@ -53,13 +53,13 @@ define([
                 recipe = this.stateViewMap.mapState(states).toView(Main).withArguments({injector: this.injector});
 
 
-            this.stateViewMap.mapState(states).toView(Header).withArguments({injector: _this.injector}).withParent(recipe).inside("#app");
-            this.stateViewMap.mapState(states).toView(Tabs).withArguments({injector: _this.injector}).withParent(recipe).inside("#app");
-            this.stateViewMap.mapState(states).toView(Footer).withArguments({injector: _this.injector}).withParent(recipe).inside("#app");
+            this.stateViewMap.mapState(states).toView(Header).withArguments({injector: _this.injector}).withParent(recipe).inside("header");
+            this.stateViewMap.mapState(states).toView(Tabs).withArguments({injector: _this.injector}).withParent(recipe).inside("[data-target=content]");
+            this.stateViewMap.mapState(states).toView(Footer).withArguments({injector: _this.injector}).withParent(recipe).inside("footer");
 
-            this.stateViewMap.mapState("myapp/page1").toView(Page1).withArguments({injector: _this.injector}).withParent(recipe).inside("#tab-content");
-            this.stateViewMap.mapState("myapp/page2").toView(Page2).withArguments({injector: _this.injector}).withParent(recipe).inside("#tab-content");
-            this.stateViewMap.mapState("myapp/page3").toView(Page3).withArguments({injector: _this.injector}).withParent(recipe).inside("#tab-content");
+            this.stateViewMap.mapState("myapp/page1").toView(Page1).withArguments({injector: _this.injector}).withParent(recipe).inside("[data-target=page-content]");
+            this.stateViewMap.mapState("myapp/page2").toView(Page2).withArguments({injector: _this.injector}).withParent(recipe).inside("[data-target=page-content]");
+            this.stateViewMap.mapState("myapp/page3").toView(Page3).withArguments({injector: _this.injector}).withParent(recipe).inside("[data-target=page-content]");
         }
     });
 });
