@@ -35,7 +35,6 @@ define([
 
         initializeNavigator: function () {
             this.njs = new navigatorjs.Navigator();
-            console.log(this.$el[0]);
             this.stateViewMap = new navigatorjs.integration.StateViewMap(this.njs, this.$el);
             this.stateUrlSyncer = new navigatorjs.integration.StateUrlSyncer(this.njs);
 
